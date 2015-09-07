@@ -1,0 +1,21 @@
+body {
+  background-color: rgb(19, 24, 35);
+  font-family: "Open Sans";
+  margin: 0;
+}
+
+#outer-body {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1#title {
+  font-weight: 900;
+  color: white;
+  background-color: rgb(40, 45, 56);
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+  margin: 0;
+}
