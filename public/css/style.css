@@ -1,4 +1,5 @@
 body {
+  color: white;
   background-color: rgb(19, 24, 35);
   font-family: "Open Sans";
   margin: 0;
@@ -18,7 +19,6 @@ body {
   height: 50px;
   line-height: 50px;
   padding-left: 20px;
-  color: white;
   margin-bottom: 30px;
 }
 
@@ -27,7 +27,6 @@ span#title-part2 {
 }
 
 .mini-title {
-  color: white;
   background-color: rgb(43, 61, 79);
   height: 25px;
   line-height: 25px;
