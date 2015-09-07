@@ -8,6 +8,7 @@ body {
   width: 800px;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgb(51, 55, 67);
 }
 
 #title-bar {
@@ -18,8 +19,28 @@ body {
   line-height: 50px;
   padding-left: 20px;
   color: white;
+  margin-bottom: 30px;
 }
 
 span#title-part2 {
   color: rgb(58, 192, 218);
+}
+
+.mini-title {
+  color: white;
+  background-color: rgb(43, 61, 79);
+  height: 25px;
+  line-height: 25px;
+  font-size: 10pt;
+  font-weight: 900;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+#comparison-wrapper {
+  height: 200px;
+}
+
+#playerlist-wrapper {
+  height: 200px;
 }
