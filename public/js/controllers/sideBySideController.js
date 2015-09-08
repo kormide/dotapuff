@@ -1,2 +1,2 @@
-app.controller("sideBySideController", function($scope, $http) {
-});
+app.controller("sideBySideController", ['$scope', '$http', '$location', function($scope, $http, $location) {
+}]);

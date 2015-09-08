@@ -8,3 +8,4 @@ block content
             div.mini-title Player Side-by-side
         #playerlist-wrapper(ng-controller='playerListController')
             div.mini-title Peer List
+            div(ng-repeat='player in players') {{player}}
