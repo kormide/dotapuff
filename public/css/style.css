@@ -46,30 +46,54 @@ span#title-part2 {
 
 .player-wrapper {
   border-bottom: 2px solid grey;
-  padding: 4px 4px 4px 10px;
 }
 
-.player-wrapper img {
+.player-avatar {
   max-width: 50px;
+  margin-right: 7px;
 }
 
-p.player-name {
-  padding-left: 7px;
-  font-size: 10pt;
-  font-weight: 900;
-  margin: 0;
+div.player-info {
   display: inline-block;
-  line-height: 10px;
   vertical-align: top;
 }
 
-p.player-id {
+div.player-name {
+  font-size: 10pt;
+  font-weight: 900;
+  margin-bottom: 5px;
+  line-height: 10px;
+}
+
+div.player-id {
   color: rgb(145, 160, 173);
-  padding-left: 10px;
   font-size: 8pt;
   line-height: 10px;
   font-weight: 900;
-  margin: 0;
-  display: inline-block;
+}
+
+img.btn-choose-left {
+  max-height: 15px;
+  background-color: darkgrey;
+  border: 2px solid #807878;
   vertical-align: top;
+  margin-right: 10px;
+}
+
+img.btn-choose-left:hover {
+  background-color: rgb(22, 197, 54);
+  cursor: pointer;
+}
+
+img.btn-choose-right {
+  max-height: 15px;
+  background-color: darkgrey;
+  border: 2px solid #807878;
+  vertical-align: top;
+  float: right;
+}
+
+img.btn-choose-right:hover {
+  background-color: rgb(22, 197, 54);
+  cursor: pointer;
 }
