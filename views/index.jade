@@ -5,9 +5,10 @@ block content
         #title-bar DOTA
             span#title-part2 PUFF
         #comparison-wrapper(ng-controller='sideBySideController')
-            div.mini-title Player Side-by-side
+            div.mini-title Side-by-side Comparison
         #playerlist-wrapper(ng-controller='playerListController')
-            div.mini-title Peer List
-            div(ng-repeat='player in players')
-                p {{player.name}}
+            div.mini-title Recent Peers
+            div.player-wrapper(ng-repeat='player in players')
                 img(src='{{player.avatar}}')
+                p.player-name {{player.name}}
+                p.player-id ({{player.id}})
