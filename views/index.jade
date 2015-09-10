@@ -13,6 +13,8 @@ block content
                 #player-right
                     img(ng-src='{{playerRight.avatar}}')
                     div {{playerRight.name}}
+                #stats-display
+                    canvas(class='chart chart-line' chart-data='' chart-labels='')
             #comparison-types
                 div WIN RATE
                 div GPM

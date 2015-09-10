@@ -1,4 +1,4 @@
-var app = angular.module("dotapuff", []);
+var app = angular.module("dotapuff", ['chart.js']);
 
 app.controller("controller", ['$scope', '$http', '$location', '$filter', function($scope, $http, $location, $filter) {
     var playerID = "46412387";

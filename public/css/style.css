@@ -98,7 +98,6 @@ img.btn-choose-right:hover {
 }
 
 #stats-area {
-  height: 200px;
   background-color: rgb(33, 33, 53);
 }
 
@@ -124,9 +123,9 @@ img.btn-choose-right:hover {
 }
 
 #player-left {
-  vertical-align: top;
   float: left;
   margin: 7px;
+  width: 50px;
 }
 
 #player-left img {
@@ -144,6 +143,7 @@ img.btn-choose-right:hover {
   vertical-align: top;
   float: right;
   margin: 7px;
+  display: inline-block;
 }
 
 #player-right img {
@@ -155,4 +155,10 @@ img.btn-choose-right:hover {
   font-size: 7pt;
   text-align: center;
   font-weight: 500;
+}
+
+#stats-display {
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
