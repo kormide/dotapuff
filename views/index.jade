@@ -1,17 +1,28 @@
 extends layout
 
 block content
-    #outer-body
+    #outer-body(ng-controller='playerListController')
         #title-bar DOTA
             span#title-part2 PUFF
-        #comparison-wrapper(ng-controller='sideBySideController')
+        #comparison-wrapper
             div.mini-title Side-by-side Comparison
-        #playerlist-wrapper(ng-controller='playerListController')
+            #stats-area
+                #player-left
+                    img(ng-src='{{playerLeft.avatar}}')
+                    div {{playerLeft.name}}
+                #player-right
+                    img(ng-src='{{playerRight.avatar}}')
+                    div {{playerRight.name}}
+            #comparison-types
+                div WIN RATE
+                div GPM
+                div XPM
+        #playerlist-wrapper
             div.mini-title Recent Peers
             div.player-wrapper(ng-repeat='player in players')
-                img.btn-choose-left(src='img/arrow-left.png')
+                img.btn-choose-left(src='img/arrow-left.png' ng-click='changeLeftPlayer(player.id)')
                 img.player-avatar(src='{{player.avatar}}')
                 div.player-info
                     div.player-name {{player.name}}
                     div.player-id &#35{{player.id}}
-                img.btn-choose-right(src='img/arrow-right.png')
+                img.btn-choose-right(src='img/arrow-right.png' ng-click='changeRightPlayer(player.id)')

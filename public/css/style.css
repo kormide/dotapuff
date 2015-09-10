@@ -33,12 +33,11 @@ span#title-part2 {
   font-size: 10pt;
   font-weight: 900;
   padding-left: 10px;
-  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 #comparison-wrapper {
-  height: 200px;
+  margin-bottom: 20px;
 }
 
 #playerlist-wrapper {
@@ -96,4 +95,64 @@ img.btn-choose-right {
 img.btn-choose-right:hover {
   background-color: rgb(22, 197, 54);
   cursor: pointer;
+}
+
+#stats-area {
+  height: 200px;
+  background-color: rgb(33, 33, 53);
+}
+
+#comparison-types {
+  background-color: rgb(52, 64, 76);
+}
+
+#comparison-types div {
+  display: inline-block;
+  font-size: 9pt;
+  font-weight: 900;
+  padding: 2px 8px 2px 4px;
+  line-height: 21px;
+}
+
+#comparison-types div.selected {
+  background-color: rgb(33, 33, 53);
+}
+
+#comparison-types div:hover {
+  background-color: rgb(33, 33, 53);
+  cursor: pointer;
+}
+
+#player-left {
+  vertical-align: top;
+  float: left;
+  margin: 7px;
+}
+
+#player-left img {
+  width: 50px;
+  height: 50px;
+}
+
+#player-left div {
+  font-size: 7pt;
+  font-weight: 500;
+  text-align: center;
+}
+
+#player-right {
+  vertical-align: top;
+  float: right;
+  margin: 7px;
+}
+
+#player-right img {
+  width: 50px;
+  height: 50px;
+}
+
+#player-right div {
+  font-size: 7pt;
+  text-align: center;
+  font-weight: 500;
 }
