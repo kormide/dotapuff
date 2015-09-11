@@ -263,6 +263,12 @@ canvas.chart-line {
   top: -1px;
 }
 
+#search-bar div {
+  display:inline-block;
+  margin-right: 10px;
+  font-size: 8pt;
+}
+
 #search-bar img {
   max-height: 15px;
   margin-left: 5px;

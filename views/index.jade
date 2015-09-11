@@ -29,6 +29,7 @@ block content
         #playerlist-wrapper
             div.mini-title Recent Peers
                 #search-bar
+                    div Player ID
                     input(type='text' placeholder='Steam ID' ng-model='searchID')
                     img(src='/img/search.png' ng-click="loadPeers(searchID)")
             div.player-wrapper(ng-repeat='player in players')
