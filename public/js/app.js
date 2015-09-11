@@ -33,10 +33,11 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
 
     $scope.isLoadingLeft = false;
     $scope.isLoadingRight = false;
+    $scope.mode = 'kda';
+    $scope.leftStats = null;
+    $scope.rightStats = null;
 
     // Set up the angular-chart
-    //$scope.data = [[1, 2, 3, 1, 5, 3, 2], [1, 5, 2, 3, 1, 4, 2]];
-    //$scope.labels = ['1', '', '', '', '5', '', '7'];
     $scope.chartData = [[], []];
     $scope.chartLabels = [];
     $scope.chartSeries = ['Unknown', 'Unknown'];
@@ -72,14 +73,8 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                         $scope.chartSeries[0] = $scope.playerLeft.name;
 
                         response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
-
-                        for (var i = 0; i < response.outcomes.length; i++) {
-                            $scope.chartData[0].push(response.outcomes[i].gpm);
-                            if (i % 10 === 0)
-                              $scope.chartLabels.push(i.toString());
-                            else
-                              $scope.chartLabels.push('');
-                        }
+                        $scope.leftStats = response.outcomes;
+                        $scope.renderStats($scope.leftStats, $scope.mode, 'left'); 
 
                     } else {
                         alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
@@ -115,14 +110,9 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                         $scope.chartSeries[1] = $scope.playerRight.name;
 
                         response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
+                        $scope.rightStats = response.outcomes;
+                        $scope.renderStats($scope.rightStats, $scope.mode, 'right'); 
 
-                        for (var i = 0; i < response.outcomes.length; i++) {
-                            $scope.chartData[1].push(response.outcomes[i].gpm);
-                            if (i % 10 === 0)
-                              $scope.chartLabels.push(i.toString());
-                            else
-                              $scope.chartLabels.push('');
-                        }
                     } else {
                         alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
                         console.log("error: could not retrieve player stats " + id + " [" + response.reason + "]")
@@ -132,6 +122,33 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
             }
         }
     };
+
+    $scope.changeMode = function(mode) {
+        $scope.mode = mode;
+
+        if ($scope.leftStats) {
+            $scope.renderStats($scope.leftStats, $scope.mode, 'left');
+        }
+
+        if ($scope.rightStats) {
+            $scope.renderStats($scope.rightStats, $scope.mode, 'right');
+        }
+    }
+
+    $scope.renderStats = function(outcomes, field, side) {
+        $scope.chartData[side == 'left' ? 0 : 1] = [];
+        $scope.chartLabels = [];
+        $scope.chartSeries[side == 'left' ? 0 : 1] = $scope.playerRight.name;
+
+        for (var i = 0; i < outcomes.length; i++) {
+            $scope.chartData[side == 'left' ? 0 : 1].push(outcomes[i][$scope.mode]);
+            if (i % 10 === 0)
+              $scope.chartLabels.push(i.toString());
+            else
+              $scope.chartLabels.push('');
+        }
+    }
+
 }]);
 
 function smoothStats(outcomes, k) {

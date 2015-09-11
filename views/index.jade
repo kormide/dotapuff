@@ -20,11 +20,11 @@ block content
                 #loading-display(ng-show='isLoadingLeft || isLoadingRight') Loading player stats, please wait...
                     img(src='/img/loading.png')
             #comparison-types
-                div KDA
-                div GPM
-                div XPM
-                div LAST HITS
-                div DENIES
+                div(ng-class="mode === 'kda' ? 'selected' : ''" ng-click="changeMode('kda')") KDA
+                div(ng-class="mode === 'gpm' ? 'selected' : ''" ng-click='changeMode(\'gpm\')') GPM
+                div(ng-class="mode === 'xpm' ? 'selected' : ''" ng-click='changeMode(\'xpm\')') XPM
+                div(ng-class="mode === 'lasthits' ? 'selected' : ''" ng-click='changeMode(\'lasthits\')') LAST HITS
+                div(ng-class="mode === 'denies' ? 'selected' : ''" ng-click='changeMode(\'denies\')') DENIES
         #playerlist-wrapper
             div.mini-title Recent Peers
             div.player-wrapper(ng-repeat='player in players')
