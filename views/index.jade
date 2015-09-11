@@ -14,11 +14,14 @@ block content
                     img(ng-src='{{playerRight.avatar}}')
                     div {{playerRight.name}}
                 #stats-display
-                    canvas(class='chart chart-line' chart-data='' chart-labels='')
+                    canvas(class='chart chart-line' chart-data='chartData' chart-labels='chartLabels' chart-series='chartSeries' chart-options='chartOptions' chart-colours='chartColours')
             #comparison-types
-                div WIN RATE
+                div WINS
+                div KDA
                 div GPM
                 div XPM
+                div LAST HITS
+                div DENIES
         #playerlist-wrapper
             div.mini-title Recent Peers
             div.player-wrapper(ng-repeat='player in players')

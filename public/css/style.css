@@ -158,7 +158,12 @@ img.btn-choose-right:hover {
 }
 
 #stats-display {
-  width: 700px;
+  width: 600px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 30px;
+}
+
+canvas.chart-line {
+  height: 200px;
 }
