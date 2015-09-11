@@ -142,11 +142,11 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     }
 
     $scope.renderStats = function(outcomes, field, side) {
-        $scope.chartData[side == 'left' ? 0 : 1] = [];
-        $scope.chartSeries[side == 'left' ? 0 : 1] = $scope.playerRight.name;
+        $scope.chartData[side === 'left' ? 0 : 1] = [];
+        $scope.chartSeries[side === 'left' ? 0 : 1] = $scope.playerRight.name;
 
         for (var i = 0; i < outcomes.length; i++) {
-            $scope.chartData[side == 'left' ? 0 : 1].push(outcomes[i][$scope.mode]);
+            $scope.chartData[side === 'left' ? 0 : 1].push(outcomes[i][$scope.mode]);
         }
 
         if ($scope.chartLabels === [] || $scope.chartLabels.length < outcomes.length) {
