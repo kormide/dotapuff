@@ -15,10 +15,11 @@ block content
                     img(ng-src='{{playerRight.avatar}}')
                     div {{playerRight.name}}
                     div.legend
-                #stats-display
+                #stats-display(ng-show='!isLoadingLeft && !isLoadingRight')
                     canvas(class='chart chart-line' chart-data='chartData' chart-labels='chartLabels' chart-series='chartSeries' chart-options='chartOptions' chart-colours='chartColours')
+                #loading-display(ng-show='isLoadingLeft || isLoadingRight') Loading player stats, please wait...
+                    img(src='/img/loading.png')
             #comparison-types
-                div WINS
                 div KDA
                 div GPM
                 div XPM

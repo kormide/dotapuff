@@ -31,6 +31,9 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     $scope.playerLeft = {id: "000", name: "No Player", avatar: "http://localhost:3000/img/no-player.png"};
     $scope.playerRight = {id: "000", name: "No Player", avatar: "http://localhost:3000/img/no-player.png"};
 
+    $scope.isLoadingLeft = false;
+    $scope.isLoadingRight = false;
+
     // Set up the angular-chart
     //$scope.data = [[1, 2, 3, 1, 5, 3, 2], [1, 5, 2, 3, 1, 4, 2]];
     //$scope.labels = ['1', '', '', '', '5', '', '7'];
@@ -48,15 +51,19 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
 
     // Change the left comparison player
     $scope.changeLeftPlayer = function(id) {
+        if ($scope.isLoadingLeft)
+            return;
         for (var i = 0; i < $scope.players.length; i++) {
             if ($scope.players[i].id === id) {
                 $scope.playerLeft = $scope.players[i];
 
+                $scope.isLoadingLeft = true;
                 // Request the player's stats
                 $http({
                     method: 'GET',
                     url: $location.path() + '/players/stats/' + id
                 }).success(function(response) {
+                    $scope.isLoadingLeft = false;
                     if (response.success) {
 
                         // Populate the chart
@@ -86,15 +93,20 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
 
     // Change the right comparison player
     $scope.changeRightPlayer = function(id) {
+        if ($scope.isLoadingRight)
+            return;
         for (var i = 0; i < $scope.players.length; i++) {
             if ($scope.players[i].id === id) {
                 $scope.playerRight = $scope.players[i];
 
+                $scope.isLoadingRight = true;
                 // Request the player's stats
                 $http({
                     method: 'GET',
                     url: $location.path() + '/players/stats/' + id
                 }).success(function(response) {
+                    $scope.isLoadingRight = false;
+
                     if (response.success) {
 
                         // Populate the chart
