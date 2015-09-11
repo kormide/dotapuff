@@ -28,8 +28,8 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     });
 
     // Initialize the left and right comparison players to a "no player" placeholder
-    $scope.playerLeft = {id: "000", name: "No Player", avatar: "http://localhost:3000/img/no-player.png"};
-    $scope.playerRight = {id: "000", name: "No Player", avatar: "http://localhost:3000/img/no-player.png"};
+    $scope.playerLeft = {id: "000", name: "No Player", avatar: $location.path() + "/img/no-player.png"};
+    $scope.playerRight = {id: "000", name: "No Player", avatar: $location.path() + "/img/no-player.png"};
 
     $scope.isLoadingLeft = false;
     $scope.isLoadingRight = false;
