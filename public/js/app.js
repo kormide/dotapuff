@@ -3,30 +3,6 @@ var app = angular.module("dotapuff", ['chart.js']);
 app.controller("controller", ['$scope', '$http', '$location', '$filter', function($scope, $http, $location, $filter) {
     var playerID = "46412387";
 
-    // Request a list of the player's peers in recent games
-    $http({
-        method: 'GET',
-        url: $location.path() + '/players/peers/' + playerID
-    }).success(function(response) {
-        if (response.success) {
-            // Add the players to peer list
-            $scope.players = response.players;
-
-            // Ensure the original player searched for is first in the list
-            for (var i = 0; i < $scope.players.length; i++) {
-                if ($scope.players[i].id === playerID) {
-                    var temp = $scope.players[0];
-                    $scope.players[0] = $scope.players[i];
-                    $scope.players[i] = temp;
-                    break;
-                }
-            }
-        } else {
-            console.log("error: could not retrieve peers from server [" + response.reason + "]");
-            alert("Could not retrieve peers from Dota 2 servers. Please wait a moment, refresh, and try again.");
-        }
-    });
-
     // Initialize the left and right comparison players to a "no player" placeholder
     $scope.playerLeft = {id: "000", name: "No Player", avatar: $location.path() + "/img/no-player.png"};
     $scope.playerRight = {id: "000", name: "No Player", avatar: $location.path() + "/img/no-player.png"};
@@ -36,6 +12,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     $scope.mode = 'kda';
     $scope.leftStats = null;
     $scope.rightStats = null;
+    $scope.searchID = "46412387";
 
     // Set up the angular-chart
     $scope.chartData = [[], []];
@@ -50,6 +27,34 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     };
     $scope.chartColours = [{strokeColor: 'rgba(255,0,0,1)'}, {strokeColor: 'rgba(0,255,0,1)'}]
 
+    $scope.loadPeers = function(id) {
+        $scope.players = [];
+        // Request a list of the player's peers in recent games
+        $http({
+            method: 'GET',
+            url: $location.path() + '/players/peers/' + id
+        }).success(function(response) {
+            if (response.success) {
+                // Add the players to peer list
+                $scope.players = response.players;
+
+                // Ensure the original player searched for is first in the list
+                for (var i = 0; i < $scope.players.length; i++) {
+                    if ($scope.players[i].id === id) {
+                        var temp = $scope.players[0];
+                        $scope.players[0] = $scope.players[i];
+                        $scope.players[i] = temp;
+                        break;
+                    }
+                }
+            } else {
+                console.log("error: could not retrieve peers from server [" + response.reason + "]");
+                alert("Could not retrieve peers from Dota 2 servers. Either the ID is invalid, or the steam servers are busy.");
+            }
+        });
+    }
+
+    $scope.loadPeers(playerID);
 
     // Change the left comparison player
     $scope.changeLeftPlayer = function(id) {

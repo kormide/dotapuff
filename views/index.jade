@@ -27,6 +27,9 @@ block content
                 div(ng-class="mode === 'denies' ? 'selected' : ''" ng-click='changeMode(\'denies\')') DENIES
         #playerlist-wrapper
             div.mini-title Recent Peers
+                #search-bar
+                    input(type='text' placeholder='Steam ID' ng-model='searchID')
+                    img(src='/img/search.png' ng-click="loadPeers(searchID)")
             div.player-wrapper(ng-repeat='player in players')
                 img.btn-choose-left(src='img/arrow-left.png' ng-click='changeLeftPlayer(player.id)')
                 img.player-avatar(src='{{player.avatar}}')
