@@ -45,7 +45,8 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
       pointDot: false,
       bezierCurveTension: 0.3,
       datasetFill: false,
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
+      showTooltips: false
     };
     $scope.chartColours = [{strokeColor: 'rgba(255,0,0,1)'}, {strokeColor: 'rgba(0,255,0,1)'}]
 
