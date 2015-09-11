@@ -44,7 +44,10 @@ span#title-part2 {
 }
 
 .player-wrapper {
-  border-bottom: 2px solid grey;
+  border-bottom: 1px solid rgb(39, 35, 35);
+  padding-top: 5px;
+  padding-left: 25px;
+  position: relative;
 }
 
 .player-avatar {
@@ -77,6 +80,9 @@ img.btn-choose-left {
   border: 2px solid #807878;
   vertical-align: top;
   margin-right: 10px;
+  position: absolute;
+  top: 5px;
+  left: 0;
 }
 
 img.btn-choose-left:hover {
@@ -89,7 +95,9 @@ img.btn-choose-right {
   background-color: darkgrey;
   border: 2px solid #807878;
   vertical-align: top;
-  float: right;
+  position: absolute;
+  top: 5px;
+  right: 0;
 }
 
 img.btn-choose-right:hover {
