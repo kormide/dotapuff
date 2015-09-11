@@ -47,7 +47,7 @@ span#title-part2 {
 .player-wrapper {
   border-bottom: 1px solid rgb(39, 35, 35);
   padding-top: 5px;
-  padding-left: 25px;
+  padding-left: 30px;
   position: relative;
 }
 
@@ -76,8 +76,9 @@ div.player-id {
 }
 
 img.btn-choose-left {
-  max-height: 15px;
-  background-color: darkgrey;
+  width: 14px;
+  height: 17px;
+  background-color: rgb(122, 125, 128);
   border: 1px solid #807878;
   vertical-align: top;
   margin-right: 10px;
@@ -92,8 +93,9 @@ img.btn-choose-left:hover {
 }
 
 img.btn-choose-right {
-  max-height: 15px;
-  background-color: darkgrey;
+  width: 14px;
+  height: 17px;
+  background-color: rgb(122, 125, 128);
   border: 1px solid #807878;
   vertical-align: top;
   position: absolute;
