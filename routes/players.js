@@ -16,7 +16,7 @@ router.get('/peers/:steam_id', function(req, res) {
 router.get('/stats/:steam_id', function(req, res) {
     console.log("request: players/stats/" + req.params.steam_id);
 
-    steamAPI.getPlayerStats(req.params.steam_id, 50, function(response) {
+    steamAPI.getPlayerStats(req.params.steam_id, 57, function(response) {
         if (!response.success) {
             console.warn("error: request for player stats failed [" + response.reason + "]");
         }

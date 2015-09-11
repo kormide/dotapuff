@@ -74,10 +74,6 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                     if (response.success) {
 
                         // Populate the chart
-                        $scope.chartData[0] = [];
-                        $scope.chartLabels = [];
-                        $scope.chartSeries[0] = $scope.playerLeft.name;
-
                         response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
                         $scope.leftStats = response.outcomes;
                         $scope.renderStats($scope.leftStats, $scope.mode, 'left'); 
@@ -111,10 +107,6 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                     if (response.success) {
 
                         // Populate the chart
-                        $scope.chartData[1] = [];
-                        $scope.chartLabels = [];
-                        $scope.chartSeries[1] = $scope.playerRight.name;
-
                         response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
                         $scope.rightStats = response.outcomes;
                         $scope.renderStats($scope.rightStats, $scope.mode, 'right'); 
@@ -143,15 +135,21 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
 
     $scope.renderStats = function(outcomes, field, side) {
         $scope.chartData[side == 'left' ? 0 : 1] = [];
-        $scope.chartLabels = [];
         $scope.chartSeries[side == 'left' ? 0 : 1] = $scope.playerRight.name;
 
         for (var i = 0; i < outcomes.length; i++) {
             $scope.chartData[side == 'left' ? 0 : 1].push(outcomes[i][$scope.mode]);
-            if (i % 10 === 0)
-              $scope.chartLabels.push(i.toString());
-            else
-              $scope.chartLabels.push('');
+        }
+
+        if ($scope.chartLabels === [] || $scope.chartLabels.length < outcomes.length) {
+            $scope.chartLabels = [];
+
+            for (var i = 0; i < outcomes.length; i++) {
+                if ((i+1) % 5 === 0)
+                  $scope.chartLabels.push((i+1).toString());
+                else
+                  $scope.chartLabels.push('');
+            }
         }
     }
 

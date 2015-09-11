@@ -17,6 +17,7 @@ block content
                     div.legend
                 #stats-display(ng-show='!isLoadingLeft && !isLoadingRight')
                     canvas(class='chart chart-line' chart-data='chartData' chart-labels='chartLabels' chart-series='chartSeries' chart-options='chartOptions' chart-colours='chartColours')
+                    p(ng-show='leftStats != null || rightStats != null') Recent matches
                 #loading-display(ng-show='isLoadingLeft || isLoadingRight') Loading player stats, please wait...
                     img(src='/img/loading.png')
             #comparison-types

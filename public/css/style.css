@@ -199,6 +199,15 @@ div.legend {
   padding-top: 30px;
 }
 
+#stats-display p {
+  text-align: center;
+  margin-top: -5px;
+  font-size: 12pt;
+  font-weight: 700;
+  font-style: italic;
+  color: rgb(169, 169, 169);
+}
+
 #loading-display {
   width: 600px;
   height: 225px;
