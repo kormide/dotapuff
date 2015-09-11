@@ -25,7 +25,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
       maintainAspectRatio: false,
       showTooltips: false
     };
-    $scope.chartColours = [{strokeColor: 'rgba(255,0,0,1)'}, {strokeColor: 'rgba(0,255,0,1)'}]
+    $scope.chartColours = [{strokeColor: 'rgba(0,255,0,1)'},{strokeColor: 'rgba(255,0,0,1)'}]
 
     $scope.loadPeers = function(id) {
         $scope.players = [];

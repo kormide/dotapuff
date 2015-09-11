@@ -104,7 +104,7 @@ img.btn-choose-right {
 }
 
 img.btn-choose-right:hover {
-  background-color: rgb(22, 197, 54);
+  background-color: rgb(177, 44, 44);
   cursor: pointer;
 }
 
@@ -157,7 +157,7 @@ img.btn-choose-right:hover {
 }
 
 #player-left div.legend {
-  background-color: rgba(255, 0, 0, 1);
+  background-color: rgba(0, 255, 0, 1);
 }
 
 #player-right {
@@ -182,7 +182,7 @@ img.btn-choose-right:hover {
 }
 
 #player-right div.legend {
-  background-color: rgba(0, 255, 0, 1);
+  background-color: rgba(255, 0, 0, 1);
 }
 
 div.legend {
