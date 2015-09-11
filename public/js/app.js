@@ -45,6 +45,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     };
     $scope.chartColours = [{strokeColor: 'rgba(255,0,0,1)'}, {strokeColor: 'rgba(0,255,0,1)'}]
 
+
     // Change the left comparison player
     $scope.changeLeftPlayer = function(id) {
         for (var i = 0; i < $scope.players.length; i++) {
@@ -62,8 +63,11 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                         $scope.chartData[0] = [];
                         $scope.chartLabels = [];
                         $scope.chartSeries[0] = $scope.playerLeft.name;
+
+                        response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
+
                         for (var i = 0; i < response.outcomes.length; i++) {
-                            $scope.chartData[0].push(response.outcomes[i].xpm);
+                            $scope.chartData[0].push(response.outcomes[i].gpm);
                             if (i % 10 === 0)
                               $scope.chartLabels.push(i.toString());
                             else
@@ -97,8 +101,11 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                         $scope.chartData[1] = [];
                         $scope.chartLabels = [];
                         $scope.chartSeries[1] = $scope.playerRight.name;
+
+                        response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
+
                         for (var i = 0; i < response.outcomes.length; i++) {
-                            $scope.chartData[1].push(response.outcomes[i].xpm);
+                            $scope.chartData[1].push(response.outcomes[i].gpm);
                             if (i % 10 === 0)
                               $scope.chartLabels.push(i.toString());
                             else
@@ -114,3 +121,42 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
         }
     };
 }]);
+
+function smoothStats(outcomes, k) {
+    var smoothFields = ['gpm', 'xpm'];
+
+    // Smooth each data field
+    smoothFields.forEach(function(field) {
+        var data = [];
+        for (var i = 0; i < outcomes.length; i++)
+            data.push(outcomes[i][field]);
+        data = smoothData(data, 5);
+        for (var i = 0; i < outcomes.length; i++)
+            outcomes[i][field] = data[i];
+    });
+
+    outcomes = outcomes.slice(k);
+    return outcomes;
+
+    // Running mean smooth
+    function smoothData (data, k) {
+        var lookback = Array(k);
+        var newData = [];
+
+        for (var i = 0; i < data.length; i++) {
+            if (i < k) {
+                lookback[i] = data[i];
+                newData.push(data[i]);
+            } else {
+                lookback[k-1] = data[i];
+                var sum = lookback.reduce(function(a, b) { return a + b; });
+                var mean = sum / k;
+                newData.push(mean);
+                lookback.push(lookback.shift());
+            }
+        }
+
+        return newData;
+    }
+}
+
