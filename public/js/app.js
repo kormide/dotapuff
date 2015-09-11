@@ -23,6 +23,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
             }
         } else {
             console.log("error: could not retrieve peers from server [" + response.reason + "]");
+            alert("Could not retrieve peers from Dota 2 servers. Please wait a moment, refresh, and try again.");
         }
     });
 
@@ -70,6 +71,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                         }
 
                     } else {
+                        alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
                         console.log("error: could not retrieve player stats " + id + " [" + response.reason + "]")
                     }
                 });
@@ -103,6 +105,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                               $scope.chartLabels.push('');
                         }
                     } else {
+                        alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
                         console.log("error: could not retrieve player stats " + id + " [" + response.reason + "]")
                     }
                 });
