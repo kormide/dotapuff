@@ -10,6 +10,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
     $scope.isLoadingLeft = false;
     $scope.isLoadingRight = false;
     $scope.mode = 'kda';
+    $scope.currStat = 'KDA';
     $scope.leftStats = null;
     $scope.rightStats = null;
     $scope.searchID = "46412387";
@@ -95,6 +96,8 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                             $scope.renderStats($scope.rightStats, $scope.mode, 'right'); 
                         }
 
+                        $scope.calcMeanStats();
+
                     } else {
                         alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
                         console.log("error: could not retrieve player stats " + id + " [" + response.reason + "]")
@@ -104,6 +107,23 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
             }
         }
     };
+
+    $scope.calcMeanStats = function() {
+        if ($scope.leftStats) {
+            var sum = 0;
+            for (var i = 0; i < $scope.leftStats.length; i++) {
+                sum += $scope.leftStats[i][$scope.mode];
+            }
+            $scope.meanLeftStat = (sum / $scope.leftStats.length).toFixed(2);
+        }
+        if ($scope.rightStats) {
+            var sum = 0;
+            for (var i = 0; i < $scope.rightStats.length; i++) {
+                sum += $scope.rightStats[i][$scope.mode];
+            }
+            $scope.meanRightStat = (sum / $scope.rightStats.length).toFixed(2);
+        }
+    }
 
     $scope.changeMode = function(mode) {
         $scope.mode = mode;
@@ -115,6 +135,10 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
         if ($scope.rightStats) {
             $scope.renderStats($scope.rightStats, $scope.mode, 'right');
         }
+
+        $scope.currStat = mode.toUpperCase();
+
+        $scope.calcMeanStats();
     }
 
     $scope.renderStats = function(outcomes, field, side) {

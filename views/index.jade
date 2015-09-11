@@ -11,10 +11,16 @@ block content
                     img(ng-src='{{playerLeft.avatar}}')
                     div {{playerLeft.name}}
                     div.legend
+                #left-mean-stats
+                    p(ng-show='leftStats != null').player-stats-label Mean {{currStat}}:
+                    p(ng-show='leftStats != null').player-stats {{meanLeftStat}}
                 #player-right
                     img(ng-src='{{playerRight.avatar}}')
                     div {{playerRight.name}}
                     div.legend
+                #right-mean-stats
+                    p(ng-show='rightStats != null').player-stats-label Mean {{currStat}}:
+                    p(ng-show='rightStats != null').player-stats {{meanRightStat}}
                 #stats-display(ng-show='!isLoadingLeft && !isLoadingRight')
                     canvas(class='chart chart-line' chart-data='chartData' chart-labels='chartLabels' chart-series='chartSeries' chart-options='chartOptions' chart-colours='chartColours')
                     p(ng-show='leftStats != null || rightStats != null') Recent matches
