@@ -120,6 +120,9 @@ describe('server', function() {
                 expect(res.body.outcomes[0]).to.have.property('gpm');
                 expect(res.body.outcomes[0]).to.have.property('xpm');
                 expect(res.body.outcomes[0]).to.have.property('win');
+                expect(res.body.outcomes[0]).to.have.property('kda');
+                expect(res.body.outcomes[0]).to.have.property('lasthits');
+                expect(res.body.outcomes[0]).to.have.property('denies');
 
                 // Check that the matches are sorted from oldest to newest
                 for (var i = 0; i < res.body.outcomes.length - 1; i++) {
