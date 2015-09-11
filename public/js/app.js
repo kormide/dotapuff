@@ -152,7 +152,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
 }]);
 
 function smoothStats(outcomes, k) {
-    var smoothFields = ['gpm', 'xpm'];
+    var smoothFields = ['gpm', 'xpm', 'kda', 'lasthits', 'denies'];
 
     // Smooth each data field
     smoothFields.forEach(function(field) {
