@@ -125,6 +125,8 @@ img.btn-choose-right:hover {
 #player-left {
   float: left;
   margin: 7px;
+  margin-left: 10px;
+  margin-top: 20px;
   width: 50px;
 }
 
@@ -139,10 +141,16 @@ img.btn-choose-right:hover {
   text-align: center;
 }
 
+#player-left div.legend {
+  background-color: rgba(255, 0, 0, 1);
+}
+
 #player-right {
   vertical-align: top;
   float: right;
   margin: 7px;
+  margin-right: 10px;
+  margin-top: 20px;
   display: inline-block;
 }
 
@@ -155,6 +163,19 @@ img.btn-choose-right:hover {
   font-size: 7pt;
   text-align: center;
   font-weight: 500;
+}
+
+#player-right div.legend {
+  background-color: rgba(0, 255, 0, 1);
+}
+
+div.legend {
+  height: 5px;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #stats-display {

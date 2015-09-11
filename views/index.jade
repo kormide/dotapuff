@@ -10,9 +10,11 @@ block content
                 #player-left
                     img(ng-src='{{playerLeft.avatar}}')
                     div {{playerLeft.name}}
+                    div.legend
                 #player-right
                     img(ng-src='{{playerRight.avatar}}')
                     div {{playerRight.name}}
+                    div.legend
                 #stats-display
                     canvas(class='chart chart-line' chart-data='chartData' chart-labels='chartLabels' chart-series='chartSeries' chart-options='chartOptions' chart-colours='chartColours')
             #comparison-types
