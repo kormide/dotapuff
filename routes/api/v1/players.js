@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var steamAPI = require('../lib/steamAPI');
+var steamAPI = require('../../../lib/steamAPI');
 
 router.get('/peers/:steam_id', function(req, res) {
-    console.log("request: players/peers/" + req.params.steam_id);
+    console.log("request: api/v1/players/peers/" + req.params.steam_id);
 
     steamAPI.getPeers(req.params.steam_id, function(response) {
         if (!response.success) {
@@ -14,7 +14,7 @@ router.get('/peers/:steam_id', function(req, res) {
 });
 
 router.get('/stats/:steam_id', function(req, res) {
-    console.log("request: players/stats/" + req.params.steam_id);
+    console.log("request: api/v1/players/stats/" + req.params.steam_id);
 
     steamAPI.getPlayerStats(req.params.steam_id, 57, function(response) {
         if (!response.success) {

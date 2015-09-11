@@ -1,6 +1,6 @@
-var boot = require('../app').boot,
-    shutdown = require('../app').shutdown,
-    port = require('../app').port;
+var boot = require('../../../app').boot,
+    shutdown = require('../../../app').shutdown,
+    port = require('../../../app').port;
 
 var superagent = require('superagent');
 var expect = require('expect.js');
@@ -12,11 +12,11 @@ describe('server', function() {
         });
     });
 
-    describe('players/peers/', function() {
+    describe('/api/v1/players/peers/', function() {
 
         it('should respond with error to GET with no player', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/peers/')
+            .get('http://localhost:' + port + '/api/v1/players/peers/')
             .end(function(err, res) {
                 expect(res.status).to.equal(404);
                 done();
@@ -25,7 +25,7 @@ describe('server', function() {
 
         it('should respond to invalid player ID', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/peers/123')
+            .get('http://localhost:' + port + '/api/v1/players/peers/123')
             .end(function(err, res) {
                 expect(res.status).to.equal(200);
                 done();
@@ -34,7 +34,7 @@ describe('server', function() {
 
         it('should provide the correct JSON for an invalid player ID', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/peers/123')
+            .get('http://localhost:' + port + '/api/v1/players/peers/123')
             .end(function(err, res) {
                 expect(res.body).to.not.equal(null);
                 expect(res.body).to.have.property('success', false);
@@ -47,7 +47,7 @@ describe('server', function() {
         it('should respond to valid player ID', function(done) {
             /* Note: this test will fail if I ever make my steam ID private */
             superagent
-            .get('http://localhost:' + port + '/players/peers/46412387')
+            .get('http://localhost:' + port + '/api/v1/players/peers/46412387')
             .end(function(err, res) {
                 expect(res.status).to.equal(200);
                 done();
@@ -56,7 +56,7 @@ describe('server', function() {
 
         it('should provide the correct JSON for a valid player ID', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/peers/46412387')
+            .get('http://localhost:' + port + '/api/v1/players/peers/46412387')
             .end(function(err, res) {
                 expect(res.body).to.not.equal(null);
                 expect(res.body).to.have.property('success', true);
@@ -73,11 +73,11 @@ describe('server', function() {
         });
     });
 
-    describe('players/stats/', function() {
+    describe('/api/v1/players/stats/', function() {
 
         it('should respond with error to GET with no player', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/stats/')
+            .get('http://localhost:' + port + '/api/v1/players/stats/')
             .end(function(err, res) {
                 expect(res.status).to.equal(404);
                 done();
@@ -86,7 +86,7 @@ describe('server', function() {
 
         it('should respond to invalid player ID', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/stats/123')
+            .get('http://localhost:' + port + '/api/v1/players/stats/123')
             .end(function(err, res) {
                 expect(res.status).to.equal(200);
                 done();
@@ -95,7 +95,7 @@ describe('server', function() {
 
         it('should provide the correct JSON for an invalid player ID', function(done) {
             superagent
-            .get('http://localhost:' + port + '/players/stats/123')
+            .get('http://localhost:' + port + '/api/v1/players/stats/123')
             .end(function(err, res) {
                 expect(res.body).to.not.equal(null);
                 expect(res.body).to.have.property('success', false);
@@ -109,7 +109,7 @@ describe('server', function() {
             this.timeout(40000);
             /* Note: this test will fail if I ever make my steam ID private */
             superagent
-            .get('http://localhost:' + port + '/players/stats/46412387')
+            .get('http://localhost:' + port + '/api/v1/players/stats/46412387')
             .end(function(err, res) {
                 expect(res.status).to.equal(200);
 

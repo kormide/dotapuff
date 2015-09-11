@@ -33,7 +33,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
         // Request a list of the player's peers in recent games
         $http({
             method: 'GET',
-            url: $location.path() + '/players/peers/' + id
+            url: $location.path() + '/api/v1/players/peers/' + id
         }).success(function(response) {
             if (response.success) {
                 // Add the players to peer list
@@ -77,7 +77,7 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
                 // Request the player's stats
                 $http({
                     method: 'GET',
-                    url: $location.path() + '/players/stats/' + id
+                    url: $location.path() + '/api/v1/players/stats/' + id
                 }).success(function(response) {
                     if (isLeft)
                         $scope.isLoadingLeft = false;

@@ -6,7 +6,7 @@
   "email": "derek.m.cormier@gmail.com",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha tests"
+    "test": "mocha --recursive tests"
   },
   "dependencies": {
     "express": "~4.0.0",
