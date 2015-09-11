@@ -1,5 +1,5 @@
 # Prerequisites
-* nodejs
+nodejs
 
 # Installation
 `npm install`
