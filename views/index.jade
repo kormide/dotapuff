@@ -32,9 +32,9 @@ block content
                     input(type='text' placeholder='Steam ID' ng-model='searchID')
                     img(src='/img/search.png' ng-click="loadPeers(searchID)")
             div.player-wrapper(ng-repeat='player in players')
-                img.btn-choose-left(src='img/arrow-left.png' ng-click='changeLeftPlayer(player.id)')
+                img.btn-choose-left(src='img/arrow-left.png' ng-click='changePlayer(player.id, true)')
                 img.player-avatar(src='{{player.avatar}}')
                 div.player-info
                     div.player-name {{player.name}}
                     div.player-id &#35{{player.id}}
-                img.btn-choose-right(src='img/arrow-right.png' ng-click='changeRightPlayer(player.id)')
+                img.btn-choose-right(src='img/arrow-right.png' ng-click='changePlayer(player.id, false)')

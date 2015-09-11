@@ -56,60 +56,44 @@ app.controller("controller", ['$scope', '$http', '$location', '$filter', functio
 
     $scope.loadPeers(playerID);
 
-    // Change the left comparison player
-    $scope.changeLeftPlayer = function(id) {
-        if ($scope.isLoadingLeft)
+    $scope.changePlayer = function(id, isLeft) {
+        // Disallow changing player when that side is already loading
+        if (isLeft && $scope.isLoadingLeft || !isLeft && $scope.isLoadingRight)
             return;
+
+        // Find the player
         for (var i = 0; i < $scope.players.length; i++) {
             if ($scope.players[i].id === id) {
-                $scope.playerLeft = $scope.players[i];
 
-                $scope.isLoadingLeft = true;
+                if (isLeft) {
+                    $scope.playerLeft = $scope.players[i];
+                    $scope.isLoadingLeft = true;
+                } else {
+                    $scope.playerRight = $scope.players[i];
+                    $scope.isLoadingRight = true;
+                }
+
                 // Request the player's stats
                 $http({
                     method: 'GET',
                     url: $location.path() + '/players/stats/' + id
                 }).success(function(response) {
-                    $scope.isLoadingLeft = false;
-                    if (response.success) {
-
-                        // Populate the chart
-                        response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
-                        $scope.leftStats = response.outcomes;
-                        $scope.renderStats($scope.leftStats, $scope.mode, 'left'); 
-
-                    } else {
-                        alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
-                        console.log("error: could not retrieve player stats " + id + " [" + response.reason + "]")
-                    }
-                });
-                break;
-            }
-        }
-    };
-
-    // Change the right comparison player
-    $scope.changeRightPlayer = function(id) {
-        if ($scope.isLoadingRight)
-            return;
-        for (var i = 0; i < $scope.players.length; i++) {
-            if ($scope.players[i].id === id) {
-                $scope.playerRight = $scope.players[i];
-
-                $scope.isLoadingRight = true;
-                // Request the player's stats
-                $http({
-                    method: 'GET',
-                    url: $location.path() + '/players/stats/' + id
-                }).success(function(response) {
-                    $scope.isLoadingRight = false;
+                    if (isLeft)
+                        $scope.isLoadingLeft = false;
+                    else
+                        $scope.isLoadingRight = false;
 
                     if (response.success) {
-
                         // Populate the chart
                         response.outcomes = smoothStats(response.outcomes, Math.ceil(response.outcomes.length / 10));
-                        $scope.rightStats = response.outcomes;
-                        $scope.renderStats($scope.rightStats, $scope.mode, 'right'); 
+
+                        if (isLeft) {
+                            $scope.leftStats = response.outcomes;
+                            $scope.renderStats($scope.leftStats, $scope.mode, 'left'); 
+                        } else {
+                            $scope.rightStats = response.outcomes;
+                            $scope.renderStats($scope.rightStats, $scope.mode, 'right'); 
+                        }
 
                     } else {
                         alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
