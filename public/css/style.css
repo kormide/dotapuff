@@ -207,6 +207,8 @@ div.legend {
   font-weight: 700;
   font-style: italic;
   color: rgb(169, 169, 169);
+  margin: 0;
+  padding-bottom: 5px;
 }
 
 #loading-display {
