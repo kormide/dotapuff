@@ -18,4 +18,6 @@ of performance over time. To change the user, enter the
 steam ID into the search bar and click the search button.
 
 Occasionally you'll get an error saying that the steam servers
-are busy. Just wait a few minuts and try again.
+are busy. Just wait a few minutes and try again. Gathering
+the necessary data requires many calls to the DOTA 2 web api,
+so loading can be a little slow.
