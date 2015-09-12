@@ -14,7 +14,10 @@ DotaPuff gathers a list of peers you've recently played with
 metrics over your last 50 games. The arrows to the left and
 right of each user will place them into left or right
 slots of the comparison view, where you can see a graph
-of performance over time. To change the user, enter the
+of performance over time. Note that you can load a second
+user while the first one is still loading.
+
+To change the user and get a list of their peers, enter the
 steam ID into the search bar and click the search button.
 
 Occasionally you'll get an error saying that the steam servers
