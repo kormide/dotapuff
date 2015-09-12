@@ -60,6 +60,9 @@ app.controller("controller", ['$scope', '$http', '$location', function($scope, $
                     console.log("error: could not retrieve peers from server [" + response.reason + "]");
                     alert("Could not retrieve peers from Dota 2 servers. Either the ID is invalid, or the steam servers are busy.");
                 }
+            }).error(function(response, status) {
+                console.log("error: could not read server [status=" + status.toString() + "]");
+                alert("Could not reach server (status=" + status.toString() + ")");
             });
         }
 
@@ -107,6 +110,9 @@ app.controller("controller", ['$scope', '$http', '$location', function($scope, $
                     alert("Could not retrieve player stats from Dota 2 servers. Please wait a moment, refresh, and try again.");
                     console.log("error: could not retrieve player stats " + id + " [" + response.reason + "]")
                 }
+            }).error(function(response, status) {
+                console.log("error: could not read server [status=" + status.toString() + "]");
+                alert("Could not reach server (status=" + status.toString() + ")");
             });
         };
 
