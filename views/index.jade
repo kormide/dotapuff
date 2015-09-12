@@ -12,14 +12,14 @@ block content
                     div {{playerLeft.name}}
                     div.legend
                 #left-mean-stats
-                    p(ng-show='leftStats != null && !isLoadingLeft').player-stats-label Mean {{currStat}}:
+                    p(ng-show='leftStats != null && !isLoadingLeft').player-stats-label Mean {{metric.toUpperCase()}}:
                     p(ng-show='leftStats != null && !isLoadingLeft').player-stats {{meanLeftStat}}
                 #player-right
                     img(ng-src='{{playerRight.avatar}}')
                     div {{playerRight.name}}
                     div.legend
                 #right-mean-stats
-                    p(ng-show='rightStats != null && !isLoadingRight').player-stats-label Mean {{currStat}}:
+                    p(ng-show='rightStats != null && !isLoadingRight').player-stats-label Mean {{metric.toUpperCase()}}:
                     p(ng-show='rightStats != null && !isLoadingRight').player-stats {{meanRightStat}}
                 #stats-display(ng-show='!isLoadingLeft && !isLoadingRight')
                     canvas(class='chart chart-line' chart-data='chartData' chart-labels='chartLabels' chart-series='chartSeries' chart-options='chartOptions' chart-colours='chartColours')
@@ -27,17 +27,17 @@ block content
                 #loading-display(ng-show='isLoadingLeft || isLoadingRight') Loading player stats, please wait...
                     img(src='/img/loading.png')
             #comparison-types
-                div(ng-class="mode === 'kda' ? 'selected' : ''" ng-click="changeMode('kda')") KDA
-                div(ng-class="mode === 'gpm' ? 'selected' : ''" ng-click='changeMode(\'gpm\')') GPM
-                div(ng-class="mode === 'xpm' ? 'selected' : ''" ng-click='changeMode(\'xpm\')') XPM
-                div(ng-class="mode === 'lasthits' ? 'selected' : ''" ng-click='changeMode(\'lasthits\')') LAST HITS
-                div(ng-class="mode === 'denies' ? 'selected' : ''" ng-click='changeMode(\'denies\')') DENIES
+                div(ng-class="metric === 'kda' ? 'selected' : ''" ng-click="changeMetric('kda')") KDA
+                div(ng-class="metric === 'gpm' ? 'selected' : ''" ng-click='changeMetric(\'gpm\')') GPM
+                div(ng-class="metric === 'xpm' ? 'selected' : ''" ng-click='changeMetric(\'xpm\')') XPM
+                div(ng-class="metric === 'lasthits' ? 'selected' : ''" ng-click='changeMetric(\'lasthits\')') LAST HITS
+                div(ng-class="metric === 'denies' ? 'selected' : ''" ng-click='changeMetric(\'denies\')') DENIES
         #playerlist-wrapper
             div.mini-title Recent Peers
                 #search-bar
                     div Player ID
-                    input(type='text' placeholder='Steam ID' ng-model='searchID')
-                    img(src='/img/search.png' ng-click="loadPeers(searchID)")
+                    input(type='text' placeholder='Steam ID' ng-model='playerID')
+                    img(src='/img/search.png' ng-click="loadPeers(playerID)")
             div.player-wrapper(ng-repeat='player in players')
                 img.btn-choose-left(src='img/arrow-left.png' ng-click='changePlayer(player.id, true)')
                 img.player-avatar(src='{{player.avatar}}')
