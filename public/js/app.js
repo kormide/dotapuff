@@ -9,8 +9,8 @@ app.controller("controller", ['$scope', '$http', '$location', function($scope, $
 
     function initPage() {
         // Initialize the left and right comparison players to a "no player" placeholder
-        $scope.playerLeft = {id: "000", name: "No Player", avatar: window.location.href + "/img/no-player.png"};
-        $scope.playerRight = {id: "000", name: "No Player", avatar: window.location.href + "/img/no-player.png"};
+        $scope.playerLeft = {id: "000", name: "No Player", avatar: window.location.href.replace(/\/$/, "") + "/img/no-player.png"};
+        $scope.playerRight = {id: "000", name: "No Player", avatar: window.location.href.replace(/\/$/, "") + "/img/no-player.png"};
 
         $scope.isLoadingLeft = false;
         $scope.isLoadingRight = false;
@@ -41,7 +41,7 @@ app.controller("controller", ['$scope', '$http', '$location', function($scope, $
             $scope.players = [];
             $http({
                 method: 'GET',
-                url: window.location.href + '/api/v1/players/peers/' + id
+                url: window.location.href.replace(/\/$/, "") + '/api/v1/players/peers/' + id
             }).success(function(response) {
                 if (response.success) {
                     // Add the players to peer list
@@ -85,7 +85,7 @@ app.controller("controller", ['$scope', '$http', '$location', function($scope, $
             // Request the player's stats
             $http({
                 method: 'GET',
-                url: window.location.href + '/api/v1/players/stats/' + id
+                url: window.location.href.replace(/\/$/, "") + '/api/v1/players/stats/' + id
             }).success(function(response) {
                 if (isLeft)
                     $scope.isLoadingLeft = false;
