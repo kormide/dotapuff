@@ -7,7 +7,7 @@ var players = require('./routes/api/v1/players');
 
 var app = express();
 
-app.set('port', 3000);
+app.set('port', 12783);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
