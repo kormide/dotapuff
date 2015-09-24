@@ -32,3 +32,5 @@ so loading can be a little slow.
 To see a hosted version of DotaPuff, see:
 
 http://derekcormier.ca/dotapuff
+
+![Screenshot](https://raw.github.com/kormide/dotapuff/master/public/img/screenshot.png)
