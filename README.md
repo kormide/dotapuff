@@ -9,10 +9,14 @@ Run with the command
 Open http://localhost:3000 in your browser.
 
 # About DotaPuff
+DotaPuff is a toy project made to help me learn Node.js. It
+visualizes statistics for how you compare to your peers in
+recent matches of DOTA 2.
+
 DotaPuff gathers a list of peers you've recently played with
 (or against) and compares your performance along various
 metrics over your last 50 games. The arrows to the left and
-right of each user will place them into left or right
+right of each user box will place them into left or right
 slots of the comparison view, where you can see a graph
 of performance over time. Note that you can load a second
 user while the first one is still loading.
