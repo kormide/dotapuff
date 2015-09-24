@@ -4,8 +4,14 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var players = require('./routes/api/v1/players');
+var config = require('./config.json');
 
 var app = express();
+
+if (!config.hasOwnProperty("STEAM_API_KEY") || !config.STEAM_API_KEY) {
+    console.log('error: could not get STEAM_API_KEY from config.json');
+    process.exit(1);
+}
 
 app.set('port', 3000);
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +52,7 @@ app.use(function(err, req, res, next) {
 });
 
 var server = http.createServer(app);
+
 var boot = function(done) {
     server.listen(app.get('port'), function() {
         console.log('info: server listening on port ' + app.get('port'));
