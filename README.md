@@ -28,3 +28,7 @@ Occasionally you'll get an error saying that the steam servers
 are busy. Just wait a few minutes and try again. Gathering
 the necessary data requires many calls to the DOTA 2 web api,
 so loading can be a little slow.
+
+To see a hosted version of DotaPuff, see:
+
+http://derekcormier.ca/dotapuff
