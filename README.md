@@ -19,7 +19,8 @@ are busy. Just wait a few minutes and try again. Gathering
 the necessary data requires many calls to the DOTA 2 web api,
 so loading can be a little slow.
 
-To see a hosted version of DotaPuff, see:
+To see a hosted version of DotaPuff, which may or may not be
+currently up, go to:
 
 http://derekcormier.ca/dotapuff
 
